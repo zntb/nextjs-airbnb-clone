@@ -172,7 +172,7 @@ export const updateListing = async (
 ) => {
   const {
     category,
-    location: { region, label: country, latlng } = {},
+    location = {}, // Default location to an empty object
     guestCount,
     bathroomCount,
     roomCount,
@@ -182,22 +182,21 @@ export const updateListing = async (
     description,
   } = data;
 
-  // Throw an error if listingId is not provided
+  const { region, label: country, latlng } = location; // Destructure from location after assigning default
+
   if (!listingId) {
     throw new Error("Listing ID is required");
   }
 
-  // Validate input data
   Object.keys(data).forEach((value: any) => {
     if (data[value] === undefined || data[value] === null) {
-      delete data[value]; // Remove keys with undefined or null values
+      delete data[value];
     }
   });
 
   const user = await getCurrentUser();
   if (!user) throw new Error("Unauthorized!");
 
-  // Check if the listing exists and belongs to the current user
   const listing = await db.listing.findUnique({
     where: { id: listingId },
   });
@@ -210,7 +209,6 @@ export const updateListing = async (
     throw new Error("You are not authorized to update this listing");
   }
 
-  // Update the listing with provided data
   const updatedListing = await db.listing.update({
     where: { id: listingId },
     data: {
