@@ -35,7 +35,10 @@ const TripsPage = async () => {
         subtitle="Where you've been and where you're going."
         backBtn
       />
-      <div className=" mt-8 md:mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 md:gap-8 gap-4">
+      <div
+        className="mt-8 md:mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
+          2xl:grid-cols-6 md:gap-8 gap-4"
+      >
         {listings.map((listing) => {
           const { reservation, ...data } = listing;
           const isFavorite = favorites.includes(listing.id);

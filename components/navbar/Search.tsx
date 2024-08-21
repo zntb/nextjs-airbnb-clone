@@ -8,7 +8,7 @@ import { FaSearch } from "react-icons/fa";
 import Modal from "../modals/Modal";
 
 const SearchModal = dynamic(() => import("@/components/modals/SearchModal"), {
-  ssr: false
+  ssr: false,
 });
 
 const Search = () => {
@@ -43,14 +43,18 @@ const Search = () => {
       <Modal.Trigger name="search">
         <button
           type="button"
-          className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition duration-300 cursor-pointer"
+          className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md
+            transition duration-300 cursor-pointer"
         >
           <div className="flex flex-row justify-between items-center">
             <small className="text-sm font-bold px-6 text-[#585858]">
               {country ? country : "Anywhere"}
             </small>
 
-            <small className="hidden sm:block text-sm font-bold px-6 border-x-[1px] flex-1 text-center text-[#585858]">
+            <small
+              className="hidden sm:block text-sm font-bold px-6 border-x-[1px] flex-1 text-center
+                text-[#585858]"
+            >
               {durationLabel}
             </small>
 
@@ -58,8 +62,8 @@ const Search = () => {
               <small className="hidden sm:block font-normal text-sm">
                 {guestLabel}
               </small>
-              <div className="p-2  bg-rose-500 rounded-full  text-white">
-                <FaSearch className="text-[12px] " />
+              <div className="p-2 bg-rose-500 rounded-full text-white">
+                <FaSearch className="text-[12px]" />
               </div>
             </div>
           </div>

@@ -54,7 +54,7 @@ const ListingMenu: FC<ListingMenuProps> = ({ id }) => {
         }
       } catch (error) {
         toast.error("Oops! Something went wrong. Please try again later.");
-        onModalClose?.()
+        onModalClose?.();
       }
     });
   };
@@ -68,9 +68,13 @@ const ListingMenu: FC<ListingMenuProps> = ({ id }) => {
         >
           <button
             type="button"
-            className="w-7 h-7 rounded-full bg-neutral-700/50 flex items-center justify-center hover:bg-neutral-700/70 group transition duration-200 z-[5]"
+            className="w-7 h-7 rounded-full bg-neutral-700/50 flex items-center justify-center
+              hover:bg-neutral-700/70 group transition duration-200 z-[5]"
           >
-            <BsThreeDots className="h-[18px] w-[18px] text-gray-300 transition duration-100 group-hover:text-gray-100 " />
+            <BsThreeDots
+              className="h-[18px] w-[18px] text-gray-300 transition duration-100
+                group-hover:text-gray-100"
+            />
           </button>
         </Menu.Toggle>
         <Menu.List position="bottom-left" className="rounded-md">

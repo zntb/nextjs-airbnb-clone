@@ -27,7 +27,7 @@ const HeartButton: React.FC<HeartButtonProps> = ({
       isFavoriteRef.current = !isFavoriteRef.current;
       setisFavorite(isFavoriteRef.current);
       toast.error("Failed to favorite");
-    }
+    },
   });
 
   const debouncedUpdateFavorite = debounce(() => {
@@ -60,16 +60,11 @@ const HeartButton: React.FC<HeartButtonProps> = ({
     <button
       type="button"
       onClick={handleClick}
-      className=" relative hover:opacity-80 transition cursor-pointer z-[5] "
+      className="relative hover:opacity-80 transition cursor-pointer z-[5]"
     >
       <AiOutlineHeart
         size={28}
-        className="
-          text-gray-50
-          absolute
-          -top-[2px]
-          -right-[2px]
-        "
+        className="text-gray-50 absolute -top-[2px] -right-[2px]"
       />
       <AiFillHeart
         size={24}

@@ -165,3 +165,68 @@ export const createListing = async (data: { [x: string]: any }) => {
 
   return listing;
 };
+
+export const updateListing = async (
+  listingId: string,
+  data: { [x: string]: any },
+) => {
+  const {
+    category,
+    location: { region, label: country, latlng } = {},
+    guestCount,
+    bathroomCount,
+    roomCount,
+    image: imageSrc,
+    price,
+    title,
+    description,
+  } = data;
+
+  // Throw an error if listingId is not provided
+  if (!listingId) {
+    throw new Error("Listing ID is required");
+  }
+
+  // Validate input data
+  Object.keys(data).forEach((value: any) => {
+    if (data[value] === undefined || data[value] === null) {
+      delete data[value]; // Remove keys with undefined or null values
+    }
+  });
+
+  const user = await getCurrentUser();
+  if (!user) throw new Error("Unauthorized!");
+
+  // Check if the listing exists and belongs to the current user
+  const listing = await db.listing.findUnique({
+    where: { id: listingId },
+  });
+
+  if (!listing) {
+    throw new Error("Listing not found");
+  }
+
+  if (listing.userId !== user.id) {
+    throw new Error("You are not authorized to update this listing");
+  }
+
+  // Update the listing with provided data
+  const updatedListing = await db.listing.update({
+    where: { id: listingId },
+    data: {
+      ...(title && { title }),
+      ...(description && { description }),
+      ...(imageSrc && { imageSrc }),
+      ...(category && { category }),
+      ...(roomCount !== undefined && { roomCount }),
+      ...(bathroomCount !== undefined && { bathroomCount }),
+      ...(guestCount !== undefined && { guestCount }),
+      ...(country && { country }),
+      ...(region && { region }),
+      ...(latlng && { latlng }),
+      ...(price && { price: parseInt(price, 10) }),
+    },
+  });
+
+  return updatedListing;
+};

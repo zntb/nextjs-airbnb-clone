@@ -4,7 +4,7 @@ export const useLoadMore = (
   loadMoreData: () => void,
   hasMoreData: boolean | undefined,
   isLoading: boolean,
-  isError: boolean
+  isError: boolean,
 ) => {
   const ref = useRef(null);
 

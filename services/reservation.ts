@@ -124,11 +124,10 @@ export const deleteReservation = async (reservationId: string) => {
       throw new Error("Invalid ID");
     }
 
-
     const reservation = await db.reservation.findUnique({
       where: {
         id: reservationId,
-      }
+      },
     });
 
     if (!reservation) {
@@ -151,6 +150,6 @@ export const deleteReservation = async (reservationId: string) => {
 
     return reservation;
   } catch (error: any) {
-    throw new Error(error.message)
+    throw new Error(error.message);
   }
 };

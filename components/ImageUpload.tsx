@@ -18,7 +18,7 @@ const ImageUpload: FC<ImageUploadProps> = ({ onChange, initialImage = "" }) => {
   const { edgestore } = useEdgeStore();
 
   const uploadImage = (e: any, file: File) => {
-    if(!file.type.startsWith("image")) return;
+    if (!file.type.startsWith("image")) return;
     setImage(URL.createObjectURL(file));
     startTransition(async () => {
       const res = await edgestore.publicFiles.upload({
@@ -43,7 +43,7 @@ const ImageUpload: FC<ImageUploadProps> = ({ onChange, initialImage = "" }) => {
   };
 
   const onDragOver = (e: React.DragEvent<HTMLLabelElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     setIsDragging(true);
   };
 
@@ -52,10 +52,10 @@ const ImageUpload: FC<ImageUploadProps> = ({ onChange, initialImage = "" }) => {
   };
 
   const onDrop = (e: React.DragEvent<HTMLLabelElement>) => {
-    e.preventDefault()
-    setIsDragging(false)
-    uploadImage(e, e.dataTransfer.files[0])
-  }
+    e.preventDefault();
+    setIsDragging(false);
+    uploadImage(e, e.dataTransfer.files[0]);
+  };
 
   return (
     <label
@@ -64,9 +64,11 @@ const ImageUpload: FC<ImageUploadProps> = ({ onChange, initialImage = "" }) => {
       onDrop={onDrop}
       htmlFor="hotel"
       className={cn(
-        " relative cursor-pointer hover:opacity-70 transition border-dashed  border-2 p-20 border-neutral-300 w-full h-[240px] flex flex-col justify-center items-center   text-neutral-600 ",
+        ` relative cursor-pointer hover:opacity-70 transition border-dashed border-2 p-20
+        border-neutral-300 w-full h-[240px] flex flex-col justify-center items-center
+        text-neutral-600 `,
         isLoading && "opacity-70",
-        isDragging && "border-red-500"
+        isDragging && "border-red-500",
       )}
     >
       {isLoading && (

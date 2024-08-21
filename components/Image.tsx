@@ -10,7 +10,7 @@ const CustomImage = ({
   className,
   priority = false,
   effect,
-  sizes
+  sizes,
 }: {
   imageSrc: string;
   fill?: boolean;
@@ -26,10 +26,10 @@ const CustomImage = ({
     <Image
       fill={fill}
       className={cn(
-        `transition duration-300`,
+        "transition duration-300",
         effect === "zoom" && "scale-95",
         isImageLoaded ? "opacity-100 scale-100" : "opacity-0",
-        className
+        className,
       )}
       src={imageSrc}
       alt={alt}

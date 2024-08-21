@@ -31,7 +31,7 @@ export const fadeIn = {
     transition: {
       duration: 0.15,
       type: "tween",
-      ease: "easeIn"
+      ease: "easeIn",
     },
   },
 };
@@ -39,7 +39,7 @@ export const fadeIn = {
 export const slideIn = (
   direction: "up" | "down" | "left" | "right",
   type: "tween" | "spring",
-  duration: number
+  duration: number,
 ) => ({
   hidden: {
     x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
@@ -48,7 +48,7 @@ export const slideIn = (
     transition: {
       duration,
       type,
-      ease: "easeOut"
+      ease: "easeOut",
     },
   },
   show: {
@@ -58,7 +58,7 @@ export const slideIn = (
     transition: {
       type,
       duration,
-      ease: "easeInOut"
+      ease: "easeInOut",
     },
   },
 });
