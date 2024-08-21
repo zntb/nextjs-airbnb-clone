@@ -11,7 +11,7 @@ const Loading = () => {
         </div>
 
         <Skeleton
-          className="!w-full md:!h-[420px] sm:!h-[280px]  !h-[260px]"
+          className="!w-full md:!h-[420px] sm:!h-[280px] !h-[260px]"
           borderRadius={"12px"}
         />
       </div>

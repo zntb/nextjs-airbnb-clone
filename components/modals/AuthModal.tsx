@@ -93,7 +93,7 @@ const AuthModal = ({
           setError("password", {});
           setTimeout(() => {
             setFocus("email");
-          }, 100)
+          }, 100);
         }
       }
     });
@@ -174,14 +174,7 @@ const AuthModal = ({
           <AiFillGithub className="w-6 h-6" />
           <span className="text-[14px]">Continue with Github</span>
         </Button>
-        <div
-          className="
-            text-neutral-500 
-          text-center 
-          mt-2 
-          font-light
-        "
-        >
+        <div className="text-neutral-500 text-center mt-2 font-light">
           <div className="text-[15px]">
             <small className="text-[15px]">
               {!isLoginModal
@@ -191,13 +184,7 @@ const AuthModal = ({
             <button
               type="button"
               onClick={onToggle}
-              className="
-              text-neutral-800
-              cursor-pointer 
-              hover:underline
-              ml-1
-              font-medium
-              "
+              className="text-neutral-800 cursor-pointer hover:underline ml-1 font-medium"
             >
               {!isLoginModal ? "Log in" : "Create an account"}
             </button>

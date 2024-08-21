@@ -16,8 +16,8 @@ import { useKeyPress } from "@/hooks/useKeyPress";
 
 const MenuContext = createContext({
   openId: "",
-  setOpenId: (val: string) => { },
-  close: () => { },
+  setOpenId: (val: string) => {},
+  close: () => {},
 });
 
 interface ToggleProps {
@@ -33,7 +33,7 @@ const Toggle: FC<ToggleProps> = ({ children, id, className }) => {
     e.preventDefault();
     e.stopPropagation();
 
-    (openId === "" || openId !== id) ? setOpenId(id) : close();
+    openId === "" || openId !== id ? setOpenId(id) : close();
   };
 
   return <>{cloneElement(children, { onClick: handleClick })}</>;
@@ -54,13 +54,13 @@ const List: FC<ListProps> = ({
   const { ref } = useOutsideClick({
     action: close,
     listenCapturing: false,
-    enable: !!openId
+    enable: !!openId,
   });
-  
+
   useKeyPress({
     key: "Escape",
     action: close,
-    enable: !!openId
+    enable: !!openId,
   });
 
   return (
@@ -76,9 +76,10 @@ const List: FC<ListProps> = ({
             originY: 0,
           }}
           className={cn(
-            `absolute top-[110%]  w-max min-w-[170px] bg-white rounded-sm z-[9999] text-[12px] overflow-hidden `,
+            `absolute top-[110%] w-max min-w-[170px] bg-white rounded-sm z-[9999] text-[12px]
+              overflow-hidden `,
             className,
-            position === "bottom-left" ? "left-0" : "right-0"
+            position === "bottom-left" ? "left-0" : "right-0",
           )}
         >
           {children}

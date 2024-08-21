@@ -22,7 +22,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({
   useEffect(() => {
     if (!buttonRef.current) return;
     const timer = setTimeout(() => {
-      if(isSelected){
+      if (isSelected) {
         buttonRef.current?.focus();
       }
     }, 300);
@@ -31,7 +31,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({
   }, [isSelected]);
 
   const handleChange = () => {
-    if(isSelected) return;
+    if (isSelected) return;
     onClick("category", label);
   };
 
@@ -42,8 +42,9 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({
         type="submit"
         onClick={handleChange}
         className={cn(
-          `rounded-xl  border-2 p-2 flex flex-col gap-3  hover:border-black cursor-pointer transition duration-200 w-full`,
-          isSelected ? "border-black" : "border-neutral-200"
+          `rounded-xl border-2 p-2 flex flex-col gap-3 hover:border-black cursor-pointer
+          transition duration-200 w-full`,
+          isSelected ? "border-black" : "border-neutral-200",
         )}
         onFocus={handleChange}
       >

@@ -20,7 +20,7 @@ const Counter: React.FC<CounterProps> = ({
   watch,
 }) => {
   const value = watch(name);
-  
+
   const onAdd = () => {
     onChange(name, value + 1);
   };
@@ -37,19 +37,22 @@ const Counter: React.FC<CounterProps> = ({
         <p className="font-light text-gray-600 text-[15.5px]">{subtitle}</p>
       </div>
       <div className="flex flex-row items-center gap-4">
-        <button type="button"
+        <button
+          type="button"
           onClick={onReduce}
-          className=" w-8 h-8 rounded-full border-[1px]  border-neutral-400 flex
-          items-center justify-center text-neutral-600 cursor-pointer hover:opacity-80  transition"
+          className="w-8 h-8 rounded-full border-[1px] border-neutral-400 flex items-center
+            justify-center text-neutral-600 cursor-pointer hover:opacity-80 transition"
         >
           <AiOutlineMinus />
         </button>
-        <span className=" font-light text-lg text-neutral-600 select-none">
+        <span className="font-light text-lg text-neutral-600 select-none">
           {value}
         </span>
-        <button type="button"
+        <button
+          type="button"
           onClick={onAdd}
-          className=" w-8 h-8 rounded-full border-[1px] border-neutral-400 flex items-center justify-center  text-neutral-600 cursor-pointer hover:opacity-80 transition"
+          className="w-8 h-8 rounded-full border-[1px] border-neutral-400 flex items-center
+            justify-center text-neutral-600 cursor-pointer hover:opacity-80 transition"
           autoFocus={title === "Guests"}
         >
           <AiOutlinePlus />

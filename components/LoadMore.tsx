@@ -36,7 +36,7 @@ const LoadMore: FC<LoadMoreProps> = ({
     fetchNextPage,
     hasNextPage,
     status === "loading" || isFetchingNextPage,
-    status === "error"
+    status === "error",
   );
 
   return (
@@ -52,7 +52,7 @@ const LoadMore: FC<LoadMoreProps> = ({
                   endDate: Date;
                   totalPrice: number;
                 };
-              }
+              },
             ) => {
               const isFavorite = favorites.includes(listing.id);
               return (
@@ -63,17 +63,15 @@ const LoadMore: FC<LoadMoreProps> = ({
                   reservation={listing?.reservation}
                 />
               );
-            }
+            },
           )}
         </React.Fragment>
       ))}
       {(status === "loading" || isFetchingNextPage) && (
         <>
-          {Array.from({ length: 4 }).map(
-            (_item: any, i: number) => (
-              <ListingSkeleton key={i} />
-            )
-          )}
+          {Array.from({ length: 4 }).map((_item: any, i: number) => (
+            <ListingSkeleton key={i} />
+          ))}
         </>
       )}
       {status === "error" && (

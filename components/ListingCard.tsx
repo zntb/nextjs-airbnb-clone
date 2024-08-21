@@ -51,7 +51,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
       </div>
       <Link href={`/listings/${data.id}`} className="col-span-1 cursor-pointer">
         <div className="flex flex-col gap-1 w-full">
-          <div className=" overflow-hidden md:rounded-xl rounded-md">
+          <div className="overflow-hidden md:rounded-xl rounded-md">
             <div className="aspect-[1/0.95] relative bg-gray-100">
               <Image
                 imageSrc={data.imageSrc}
@@ -86,7 +86,7 @@ export default ListingCard;
 
 export const ListingSkeleton = () => {
   return (
-    <div className="col-span-1 ">
+    <div className="col-span-1">
       <div className="flex flex-col gap-1 w-full">
         <Skeleton
           width={"100%"}

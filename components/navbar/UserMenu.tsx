@@ -31,7 +31,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
           <Modal.Trigger name={user ? "share" : "Login"}>
             <button
               type="button"
-              className="hidden md:block text-sm font-bold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer text-[#585858]"
+              className="hidden md:block text-sm font-bold py-3 px-4 rounded-full hover:bg-neutral-100
+                transition cursor-pointer text-[#585858]"
             >
               Share your home
             </button>
@@ -40,7 +41,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
             <Menu.Toggle id="user-menu">
               <button
                 type="button"
-                className=" p-4 md:py-1 md:px-2 border-[1px]   border-neutral-200  flex  flex-row  items-center   gap-3   rounded-full   cursor-pointer   hover:shadow-md   transition duration-300"
+                className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center
+                  gap-3 rounded-full cursor-pointer hover:shadow-md transition duration-300"
               >
                 <AiOutlineMenu />
                 <div className="hidden md:block">

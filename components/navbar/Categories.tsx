@@ -39,9 +39,8 @@ const Categories = () => {
 
   return (
     <div
-      className={` ${
-        isActive ? "shadow-md shadow-[rgba(0,0,0,.045)]" : ""
-      } transition-all duration-150`}
+      className={` ${isActive ? "shadow-md shadow-[rgba(0,0,0,.045)]" : ""} transition-all
+        duration-150`}
     >
       <Swiper
         slidesPerView="auto"

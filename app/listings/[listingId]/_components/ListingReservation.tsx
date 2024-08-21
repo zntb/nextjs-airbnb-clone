@@ -17,8 +17,8 @@ interface ListingReservationProps {
 }
 
 const Calendar = dynamic(() => import("@/components/Calender"), {
-  ssr: false
-})
+  ssr: false,
+});
 
 const ListingReservation: React.FC<ListingReservationProps> = ({
   price,
@@ -46,7 +46,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
         <Button
           disabled={isLoading}
           onClick={onSubmit}
-          className="flex flex-row items-center justify-center h-[42px] "
+          className="flex flex-row items-center justify-center h-[42px]"
           size="large"
         >
           {isLoading ? <SpinnerMini /> : <span>Reserve</span>}
