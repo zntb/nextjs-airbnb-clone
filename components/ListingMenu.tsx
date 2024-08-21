@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useTransition } from "react";
+import React, { FC, useState, useTransition } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
@@ -8,14 +8,15 @@ import toast from "react-hot-toast";
 import Menu from "./Menu";
 import Modal from "./modals/Modal";
 import ConfirmDelete from "./ConfirmDelete";
+import UpdateRentModal from "./modals/UpdateRentModal";
 
 import { deleteProperty } from "@/services/properties";
 import { deleteReservation } from "@/services/reservation";
 
-const pathNameDict: { [x: string]: string } = {
-  "/properties": "Delete property",
-  "/trips": "Cancel reservation",
-  "/reservations": "Cancel guest reservation",
+const pathNameDict: { [x: string]: string[] } = {
+  "/properties": ["Update property", "Delete property"],
+  "/trips": ["Cancel reservation"],
+  "/reservations": ["Cancel guest reservation"],
 };
 
 interface ListingMenuProps {
@@ -34,7 +35,7 @@ const ListingMenu: FC<ListingMenuProps> = ({ id }) => {
 
   if (pathname === "/" || pathname === "/favorites") return null;
 
-  const onConfirm = (onModalClose?: () => void) => {
+  const onConfirmDelete = (onModalClose?: () => void) => {
     startTransition(() => {
       try {
         if (pathname === "/properties") {
@@ -63,7 +64,7 @@ const ListingMenu: FC<ListingMenuProps> = ({ id }) => {
     <Modal>
       <Menu>
         <Menu.Toggle
-          id="lisiting-menu"
+          id="listing-menu"
           className="w-10 h-10 flex items-center z-5 justify-center"
         >
           <button
@@ -78,17 +79,31 @@ const ListingMenu: FC<ListingMenuProps> = ({ id }) => {
           </button>
         </Menu.Toggle>
         <Menu.List position="bottom-left" className="rounded-md">
-          <Modal.Trigger name="confirm-delete">
-            <Menu.Button className="text-[14px] rounded-md font-semibold py-[10px] hover:bg-neutral-100 transition">
-              {pathNameDict[pathname]}
-            </Menu.Button>
-          </Modal.Trigger>
+          {pathNameDict[pathname]?.map((action, index) => (
+            <Modal.Trigger
+              key={index}
+              name={
+                action === "Update property" ? "update-modal" : "delete-modal"
+              }
+            >
+              <Menu.Button className="text-[14px] rounded-md font-semibold py-[10px] hover:bg-neutral-100 transition">
+                {action}
+              </Menu.Button>
+            </Modal.Trigger>
+          ))}
         </Menu.List>
       </Menu>
-      <Modal.Window name="confirm-delete">
+
+      {/* Update Modal */}
+      <Modal.Window name="update-modal">
+        <UpdateRentModal listingId={id} />
+      </Modal.Window>
+
+      {/* Delete Modal */}
+      <Modal.Window name="delete-modal">
         <ConfirmDelete
-          onConfirm={onConfirm}
-          title={pathNameDict[pathname]}
+          title="Delete property"
+          onConfirm={onConfirmDelete}
           isLoading={isLoading}
         />
       </Modal.Window>
